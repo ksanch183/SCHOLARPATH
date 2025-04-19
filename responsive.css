@@ -1,0 +1,147 @@
+/* Make sure the body and html take up the full height */
+html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+/* Floater Navigation Styling */
+.floater-nav {
+    display: none; /* Hidden by default, only visible on small screens */
+    position: fixed;
+    top: 20px;  /* Floater positioned at top-left */
+    right: 20px;  /* Floater position on the top-right */
+    background-color: #333;
+    color: #fff;
+    border-radius: 50%;
+    padding: 15px;
+    z-index: 1100;
+    cursor: pointer;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2);
+    font-size: 1.5rem;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.floater-nav:hover {
+    background-color: #555;
+    transform: scale(1.1);
+}
+
+.floater-dropdown {
+    display: none; /* Dropdown hidden by default */
+    position: absolute;
+    top: 70px;  /* Align dropdown with the top of the floater */
+    right: 0;
+    background-color: #fff;
+    color: #333;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2);
+    width: 200px;
+    padding: 10px;
+    z-index: 1000;
+}
+
+.floater-dropdown ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.floater-dropdown ul li {
+    padding: 10px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+    position: relative; /* Make the li a positioning context for sub-dropdown */
+}
+
+/* Style links in the dropdown */
+.floater-dropdown ul li a {
+    color: #333;
+    text-decoration: none;
+    display: block;
+}
+
+.floater-dropdown ul li a:hover {
+    background-color: #f0f0f0;
+}
+
+.floater-dropdown ul li:last-child {
+    border-bottom: none;
+}
+
+/* Sub-dropdown styling */
+.floater-dropdown .dropdown {
+    display: none;  /* Hidden by default */
+    position: absolute;
+    left: -210px;  /* Sub-dropdown positioned to the left of the parent */
+    top: 0;         /* Align sub-dropdown with the parent item */
+    background-color: #fff;
+    color: #333;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    width: 200px;
+    padding: 10px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2);
+}
+
+/* Show sub-dropdown when the parent tab is active */
+.floater-dropdown ul li.active .dropdown {
+    display: block;  /* Show the sub-dropdown */
+}
+
+/* Allow scrolling on the whole page */
+body {
+    overflow-y: auto; /* Enable scrolling for the entire page */
+}
+
+/* Wrapper class to allow scrolling */
+.wrapper {
+    height: 100vh;
+    overflow-y: auto;  /* Enable vertical scrolling */
+    padding: 20px;
+    box-sizing: border-box;  /* Ensures padding doesn't affect the overall size */
+}
+
+/* Make the form-box scrollable */
+.form-box {
+    overflow-y: auto;  /* Enable vertical scrolling */
+    padding: 20px;
+    box-sizing: border-box; 
+    overflow-y: auto; /* Ensures padding doesn't affect the overall size */
+}
+
+/* Ensure the page content takes full height */
+.content-box {
+    min-height: 100%; /* Ensure content can take up space even if small */
+}
+
+/* Responsive Styling */
+@media (max-width: 786px) {
+    .floater-nav {
+        display: flex; /* Show floater nav on small screens */
+        justify-content: center;
+        align-items: center;
+    }
+
+    .header-main-login {
+        display: none; /* Hide standard navigation */
+    }
+}
+.expandable-content {
+    opacity: 0;
+    transform: translateY(20px);  /* Slightly position the content lower */
+    transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+.expandable-content.active {
+    opacity: 1;
+    transform: translateY(0);  /* Return to its original position */
+}
+.expandable-content {
+    display: none;
+}
+
+.expandable-content.active {
+    display: block;
+}
